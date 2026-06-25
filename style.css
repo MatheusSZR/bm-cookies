@@ -1,0 +1,400 @@
+/* =========================
+   PALETA
+========================= */
+:root{
+    --marrom-900:#2f1204;
+    --marrom-800:#5a2408;
+    --marrom-700:#81370A;
+    --bege:#FDEFE4;
+    --branco:#ffffff;
+}
+
+/* =========================
+   RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter','Manrope',sans-serif;
+    background:var(--bege);
+    color:var(--marrom-900);
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    min-height:90vh;
+    padding:60px 20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* CAPA */
+.hero-bg{
+    position:absolute;
+    inset:0;
+
+    background:url("imagens/capa.png") center/cover no-repeat;
+
+    transform:scale(1.08);
+
+    animation:zoomHero 14s ease-in-out infinite alternate;
+
+    z-index:0;
+}
+
+/* ESCURECIMENTO FORTE PRA CONTRASTE REAL */
+.hero-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        180deg,
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.65)
+    );
+}
+
+/* =========================
+   🔥 GRADIENTE REAL PRA PRÓXIMA SEÇÃO
+   (AQUI É O QUE VOCÊ QUERIA)
+========================= */
+.hero-fade{
+    position:absolute;
+    bottom:-1px;
+    left:0;
+
+    width:100%;
+    height:180px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        var(--bege) 100%
+    );
+
+    z-index:2;
+}
+
+/* animação da capa */
+@keyframes zoomHero{
+    from{ transform:scale(1.08); }
+    to{ transform:scale(1.15); }
+}
+
+/* =========================
+   LOGO HERO (GRANDE E LIMPA)
+========================= */
+.logo-hero{
+    width:320px;
+
+    position:relative;
+    z-index:3;
+
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.5));
+
+    margin-bottom:10px;
+}
+
+/* =========================
+   TEXTO HERO
+========================= */
+.subtitulo{
+    color:#fff;
+    opacity:0.9;
+
+    position:relative;
+    z-index:3;
+}
+
+.descricao{
+    max-width:600px;
+
+    margin-top:15px;
+
+    color:#fff;
+    opacity:0.85;
+
+    position:relative;
+    z-index:3;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+.botao{
+    margin-top:25px;
+    padding:16px 34px;
+
+    background:var(--marrom-700);
+    color:var(--bege);
+
+    text-decoration:none;
+    font-weight:700;
+
+    border-radius:999px;
+
+    position:relative;
+    z-index:3;
+
+    transition:0.3s ease;
+
+    box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+
+.botao:hover{
+    transform:translateY(-4px);
+    background:var(--marrom-800);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+.secao{
+    padding:90px 20px;
+    text-align:center;
+}
+
+.secao h2{
+    font-family:'Playfair Display', serif;
+    font-size:2.2rem;
+
+    color:var(--marrom-700);
+
+    margin-bottom:25px;
+}
+
+/* =========================
+   LOGO NAS SEÇÕES
+========================= */
+.logo-section{
+    width:110px;
+
+    margin:0 auto 15px auto;
+    display:block;
+
+    opacity:0.75;
+
+    transition:0.3s ease;
+}
+
+.logo-section:hover{
+    transform:scale(1.05);
+    opacity:1;
+}
+
+/* =========================
+   TEXTO
+========================= */
+.texto{
+    max-width:750px;
+    margin:auto;
+
+    color:var(--marrom-900);
+    opacity:0.9;
+}
+
+/* =========================
+   CARDÁPIO
+========================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:25px;
+
+    max-width:1000px;
+    margin:auto;
+}
+
+/* CARD */
+.card{
+    background:var(--branco);
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    transition:0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 18px 40px rgba(0,0,0,0.15);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card h3{
+    margin-top:12px;
+
+    font-family:'Playfair Display', serif;
+
+    color:var(--marrom-700);
+}
+
+.card p{
+    margin:10px 0;
+
+    font-weight:600;
+
+    color:var(--marrom-700);
+}
+
+/* BOTÃO CARD */
+.btn-card{
+    margin:10px 0 15px;
+    padding:10px 18px;
+
+    border:none;
+    border-radius:999px;
+
+    background:var(--marrom-700);
+    color:var(--bege);
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.btn-card:hover{
+    transform:scale(1.05);
+    background:var(--marrom-800);
+}
+
+/* =========================
+   DIFERENCIAIS
+========================= */
+.grid-simples{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+
+    max-width:900px;
+    margin:auto;
+}
+
+.item{
+    background:var(--branco);
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
+
+    transition:0.3s ease;
+}
+
+.item:hover{
+    transform:translateY(-6px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+    background:var(--marrom-700);
+    color:var(--bege);
+
+    text-align:center;
+    padding:25px;
+}
+
+/* =========================
+   BOTÃO TOPO
+========================= */
+#topoBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    background:var(--marrom-700);
+    color:var(--bege);
+
+    display:none;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   WHATSAPP FLUTUANTE
+========================= */
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    width:65px;
+    height:65px;
+
+    background:#25D366;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+
+    z-index:999;
+
+    transition:0.3s ease;
+}
+
+.whatsapp-float img{
+    width:32px;
+    height:32px;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.08);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media(max-width:768px){
+
+    .logo-hero{
+        width:220px;
+    }
+
+    .secao{
+        padding:70px 20px;
+    }
+
+    .card img{
+        height:180px;
+    }
+}
