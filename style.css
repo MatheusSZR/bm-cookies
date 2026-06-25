@@ -41,7 +41,6 @@ body{
     overflow:hidden;
 }
 
-/* fundo capa */
 .hero-bg{
     position:absolute;
     inset:0;
@@ -50,7 +49,6 @@ body{
     z-index:0;
 }
 
-/* overlay */
 .hero::before{
     content:"";
     position:absolute;
@@ -59,7 +57,6 @@ body{
     z-index:1;
 }
 
-/* fade para próxima seção */
 .hero-fade{
     position:absolute;
     bottom:0;
@@ -70,7 +67,6 @@ body{
     z-index:2;
 }
 
-/* logo hero */
 .logo-hero{
     width:280px;
     max-width:80%;
@@ -79,24 +75,18 @@ body{
     filter:drop-shadow(0 15px 25px rgba(0,0,0,0.5));
 }
 
-/* texto hero */
-.subtitulo,
-.descricao{
-    position:relative;
-    z-index:3;
-    color:#fff;
-}
-
-/* SAUDAÇÃO CORRIGIDA */
+/* SAUDAÇÃO */
 .subtitulo{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:6px;
     font-size:1.2rem;
+    color:#fff;
+    position:relative;
+    z-index:3;
 }
 
-/* COOKIE PEQUENO (FIX DEFINITIVO) */
 .cookie-emoji{
     width:18px !important;
     height:18px !important;
@@ -104,7 +94,14 @@ body{
     display:inline-block;
 }
 
-/* botão hero */
+.descricao{
+    position:relative;
+    z-index:3;
+    color:#fff;
+    margin-top:10px;
+    opacity:0.85;
+}
+
 .botao{
     margin-top:25px;
     padding:14px 28px;
@@ -134,7 +131,6 @@ body{
     align-items:center;
 }
 
-/* títulos */
 .secao h2{
     font-family:'Playfair Display', serif;
     font-size:2rem;
@@ -142,7 +138,6 @@ body{
     margin-bottom:20px;
 }
 
-/* texto */
 .texto{
     max-width:700px;
     margin-bottom:15px;
@@ -150,11 +145,10 @@ body{
 }
 
 /* =========================
-   LOGO DAS SEÇÕES
+   LOGOS SECUNDÁRIAS
 ========================= */
 .logo-section{
     width:90px !important;
-    height:auto;
     margin-bottom:15px;
     opacity:0.75;
 }
@@ -239,15 +233,7 @@ body{
 }
 
 /* =========================
-   CONTATO
-========================= */
-.secao a.botao{
-    display:inline-block;
-    margin-top:20px;
-}
-
-/* =========================
-   FOOTER
+   CONTATO / FOOTER
 ========================= */
 footer{
     background:var(--marrom-700);
@@ -279,14 +265,67 @@ footer{
 }
 
 /* =========================
-   RESPONSIVO
+   RESPONSIVO MOBILE
 ========================= */
-@media(max-width:768px){
+@media (max-width:768px){
+
+    .hero{
+        min-height:80vh;
+        padding:40px 15px;
+    }
+
     .logo-hero{
-        width:200px;
+        width:180px;
+    }
+
+    .subtitulo{
+        font-size:1rem;
+    }
+
+    .descricao{
+        font-size:0.9rem;
+        padding:0 10px;
+    }
+
+    .botao{
+        width:90%;
+        text-align:center;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:160px;
+    }
+
+    .secao{
+        padding:50px 15px;
+    }
+
+    .secao h2{
+        font-size:1.5rem;
+    }
+
+    .logo-section{
+        width:70px;
     }
 
     .cookie-decor{
+        width:55px;
+        opacity:0.6;
+    }
+
+    .cookie-decor.left{
+        left:-30px;
+    }
+
+    .cookie-decor.right{
+        right:-30px;
+    }
+
+    .c4,.c5,.c6{
         display:none;
     }
 }
