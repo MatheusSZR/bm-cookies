@@ -10,7 +10,7 @@
 }
 
 /* =========================
-   RESET
+   RESET SEGURO (SEM DESTRUIR IMAGENS)
 ========================= */
 *{
     margin:0;
@@ -26,6 +26,7 @@ body{
     line-height:1.6;
 }
 
+/* 🚨 NUNCA MAIS usar img global width:100% */
 /* =========================
    HERO
 ========================= */
@@ -75,25 +76,38 @@ body{
     filter:drop-shadow(0 15px 25px rgba(0,0,0,0.5));
 }
 
-/* SAUDAÇÃO */
+/* =========================
+   SAUDAÇÃO (FIX DEFINITIVO)
+========================= */
 .subtitulo{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:6px;
+
     font-size:1.2rem;
     color:#fff;
+
     position:relative;
     z-index:3;
 }
 
-.cookie-emoji{
+/* 🔥 COOKIE DO TEXTO (IMUNE A QUALQUER CSS) */
+img.cookie-emoji{
     width:18px !important;
     height:18px !important;
+    max-width:18px !important;
+    max-height:18px !important;
+
     object-fit:contain;
-    display:inline-block;
+
+    display:inline-block !important;
+    flex-shrink:0;
+
+    vertical-align:middle;
 }
 
+/* texto hero */
 .descricao{
     position:relative;
     z-index:3;
@@ -102,6 +116,7 @@ body{
     opacity:0.85;
 }
 
+/* botão hero */
 .botao{
     margin-top:25px;
     padding:14px 28px;
@@ -149,6 +164,7 @@ body{
 ========================= */
 .logo-section{
     width:90px !important;
+    height:auto;
     margin-bottom:15px;
     opacity:0.75;
 }
@@ -243,7 +259,7 @@ footer{
 }
 
 /* =========================
-   WHATSAPP FLUTUANTE
+   WHATSAPP FLOAT
 ========================= */
 .whatsapp-float{
     position:fixed;
@@ -265,7 +281,7 @@ footer{
 }
 
 /* =========================
-   RESPONSIVO MOBILE
+   RESPONSIVO (NÚCLEO FINAL)
 ========================= */
 @media (max-width:768px){
 
@@ -312,20 +328,24 @@ footer{
         width:70px;
     }
 
+    /* 🔥 COOKIES MOBILE CONTROLADOS */
     .cookie-decor{
         width:55px;
         opacity:0.6;
     }
 
-    .cookie-decor.left{
-        left:-30px;
-    }
-
-    .cookie-decor.right{
-        right:-30px;
-    }
+    .cookie-decor.left{ left:-30px; }
+    .cookie-decor.right{ right:-30px; }
 
     .c4,.c5,.c6{
         display:none;
+    }
+
+    /* 🔥 GARANTIA ABSOLUTA DO COOKIE DO TEXTO */
+    img.cookie-emoji{
+        width:18px !important;
+        height:18px !important;
+        max-width:18px !important;
+        max-height:18px !important;
     }
 }
