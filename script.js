@@ -1,19 +1,31 @@
-const numero = "5561981570523";
 
 /* =========================
-   SAUDAÇÃO DINÂMICA
+   SAUDAÇÃO COM COOKIE (IMAGEM)
 ========================= */
 const saudacao = document.getElementById("saudacao");
 
 const hora = new Date().getHours();
 
+let texto = "";
+let cookieImg = "";
+
 if (hora < 12) {
-    saudacao.innerText = "Bom dia! 🍪";
-} else if (hora < 18) {
-    saudacao.innerText = "Boa tarde! 🍪";
-} else {
-    saudacao.innerText = "Boa noite! 🍪";
+    texto = "Bom dia";
+    cookieImg = "imagens/cookietradicional.png";
+} 
+else if (hora < 18) {
+    texto = "Boa tarde";
+    cookieImg = "imagens/cookiechocolateduplo.png";
+} 
+else {
+    texto = "Boa noite";
+    cookieImg = "imagens/cookielimao.png";
 }
+
+saudacao.innerHTML = `
+    <span>${texto}</span>
+    <img src="${cookieImg}" class="cookie-emoji" alt="cookie">
+`;
 
 /* =========================
    BOTÃO VOLTAR AO TOPO
@@ -36,7 +48,7 @@ topoBtn.addEventListener("click", () => {
 });
 
 /* =========================
-   PEDIDO POR SABOR (WHATSAPP)
+   WHATSAPP DOS CARDS
 ========================= */
 document.querySelectorAll(".btn-card").forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -46,27 +58,35 @@ document.querySelectorAll(".btn-card").forEach(btn => {
 
         const mensagem = `Olá! Quero pedir o cookie de ${sabor} 🍪`;
 
-        const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+        const url = `https://wa.me/5561981570523?text=${encodeURIComponent(mensagem)}`;
 
         window.open(url, "_blank");
     });
 });
 
 /* =========================
-   INTERAÇÃO VISUAL (APP FEEL)
+   COOKIES DECORATIVOS (LATERAIS ESTÁVEIS)
+   - só adiciona/remove classe
 ========================= */
-document.querySelectorAll(".card").forEach(card => {
+const cookies = document.querySelectorAll(".cookie-decor");
 
-    card.addEventListener("mousedown", () => {
-        card.style.transform = "scale(0.97)";
+function controlarCookies() {
+
+    const scrollY = window.scrollY;
+    const alturaTela = window.innerHeight;
+
+    cookies.forEach((cookie, index) => {
+
+        const trigger = (index + 1) * (alturaTela * 0.35);
+
+        if (scrollY > trigger) {
+            cookie.classList.add("show");
+        } else {
+            cookie.classList.remove("show");
+        }
+
     });
+}
 
-    card.addEventListener("mouseup", () => {
-        card.style.transform = "";
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
-    });
-
-});
+window.addEventListener("scroll", controlarCookies);
+window.addEventListener("load", controlarCookies);
