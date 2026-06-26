@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B&M Cookies</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -13,177 +15,197 @@
 
 <body>
 
-<!-- =========================
-     COOKIES DECORATIVOS
-========================= -->
-<img src="imagens/cookietradicional.png" class="cookie-decor left c1">
-<img src="imagens/cookiechocolateduplo.png" class="cookie-decor right c2">
-<img src="imagens/cookielimao.png" class="cookie-decor left c3">
+<nav id="navbar" class="navbar">
+    <div class="nav-container">
+        <a href="#inicio" class="nav-logo">B&M</a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#cardapio">Cardápio</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+</nav>
 
-<img src="imagens/cookietradicional.png" class="cookie-decor right c4">
-<img src="imagens/cookiechocolateduplo.png" class="cookie-decor left c5">
-<img src="imagens/cookielimao.png" class="cookie-decor right c6">
+<div class="decoracoes" aria-hidden="true">
+    <img src="imagens/cookietradicional.png" class="cookie-decor left c1" alt="">
+    <img src="imagens/cookiechocolateduplo.png" class="cookie-decor right c2" alt="">
+    <img src="imagens/cookielimao.png" class="cookie-decor left c3" alt="">
+    
+    <img src="imagens/cookietradicional.png" class="cookie-decor right c4" alt="">
+    <img src="imagens/cookiechocolateduplo.png" class="cookie-decor left c5" alt="">
+    <img src="imagens/cookielimao.png" class="cookie-decor right c6" alt="">
+</div>
 
-<!-- =========================
-     HERO
-========================= -->
-<header class="hero">
+<header class="hero" id="inicio">
 
-    <div class="hero-bg"></div>
+    <div class="hero-bg parallax"></div>
 
-    <img src="imagens/logo.png" class="logo-hero" alt="B&M Cookies">
+    <img src="imagens/logo.png" class="logo-hero" alt="Logotipo B&M Cookies">
 
     <p id="saudacao" class="subtitulo"></p>
 
-    <p class="descricao">
+    <h1 class="descricao">
         Transformando sonhos e propósitos em algo especial, um cookie de cada vez.
-    </p>
+    </h1>
 
-    <a href="https://wa.me/5561981570523" target="_blank" class="botao">
-        Fazer pedido no WhatsApp
+    <a href="#cardapio" class="botao">
+        Ver Cardápio
     </a>
 
     <div class="hero-fade"></div>
 
 </header>
 
-<!-- =========================
-     SEÇÃO LADO A LADO (DESKTOP)
-========================= -->
-<div class="secao-container">
+<main>
+    
+    <div class="secao-container">
 
-    <!-- SOBRE NÓS -->
-    <section class="secao bloco-interativo">
+        <section class="secao bloco-interativo" id="sobre">
+            <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
+            <h2>Sobre nós</h2>
+            <p class="texto">
+                A B&M Cookies nasceu da união entre sonhos, propósito e a vontade de transformar uma ideia em algo especial. Cada detalhe é feito com dedicação para levar sabor, qualidade e momentos felizes a quem nos escolhe.
+            </p>
+        </section>
 
-        <img src="imagens/logo.png" class="logo-section" alt="B&M Cookies">
+        <section class="secao bloco-interativo destaque" id="proposito">
+            <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
+            <h2>Por trás de cada cookie</h2>
+            <p class="texto">
+                Mais do que produzir cookies artesanais, estamos construindo uma história. Cada pedido representa um passo importante nessa jornada e cada cliente passa a fazer parte desse sonho que estamos transformando em realidade.
+            </p>
+        </section>
 
-        <h2>Sobre nós</h2>
+    </div>
 
-        <p class="texto">
-            A B&M Cookies nasceu da união entre sonhos, propósito e a vontade de transformar uma ideia em algo especial. Cada detalhe é feito com dedicação para levar sabor, qualidade e momentos felizes a quem nos escolhe.
-        </p>
+    <section class="secao diferenciais" id="diferenciais">
+
+        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
+        <h2>Por que escolher a B&M?</h2>
+
+        <div class="grid">
+            <article class="card">
+                <h3>🍪 Produção Artesanal</h3>
+                <p>Preparado com cuidado em cada detalhe.</p>
+            </article>
+
+            <article class="card">
+                <h3>⭐ Ingredientes Selecionados</h3>
+                <p>Qualidade que você sente na primeira mordida.</p>
+            </article>
+
+            <article class="card">
+                <h3>❤️ Feito com Propósito</h3>
+                <p>Cada cookie carrega dedicação e sonho.</p>
+            </article>
+
+            <article class="card">
+                <h3>📦 Encomendas Semanais</h3>
+                <p>Produção organizada para sempre chegar fresco.</p>
+            </article>
+        </div>
 
     </section>
 
-    <!-- POR TRÁS DE CADA COOKIE -->
-    <section class="secao bloco-interativo destaque">
+    <section class="secao" id="cardapio">
 
-        <img src="imagens/logo.png" class="logo-section" alt="B&M Cookies">
+        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
+        <h2>Nosso Cardápio</h2>
 
-        <h2>Por trás de cada cookie</h2>
+        <div class="grid">
+            <article class="card" data-sabor="Tradicional" data-preco="12.00" data-img="imagens/cookietradicional.png">
+                <img src="imagens/cookietradicional.png" alt="Foto do Cookie Tradicional">
+                <h3>Tradicional</h3>
+                <p class="preco">R$ 12,00</p>
+                <button class="btn-card btn-abrir-modal">Pedir esse</button>
+            </article>
 
-        <p class="texto">
-            Mais do que produzir cookies artesanais, estamos construindo uma história. Cada pedido representa um passo importante nessa jornada e cada cliente passa a fazer parte desse sonho que estamos transformando em realidade.
-        </p>
+            <article class="card" data-sabor="Chocolate Duplo" data-preco="12.00" data-img="imagens/cookiechocolateduplo.png">
+                <img src="imagens/cookiechocolateduplo.png" alt="Foto do Cookie de Chocolate Duplo">
+                <h3>Chocolate Duplo</h3>
+                <p class="preco">R$ 12,00</p>
+                <button class="btn-card btn-abrir-modal">Pedir esse</button>
+            </article>
+
+            <article class="card" data-sabor="Limão" data-preco="12.00" data-img="imagens/cookielimao.png">
+                <img src="imagens/cookielimao.png" alt="Foto do Cookie de Limão">
+                <h3>Limão</h3>
+                <p class="preco">R$ 12,00</p>
+                <button class="btn-card btn-abrir-modal">Pedir esse</button>
+            </article>
+
+        </div>
 
     </section>
 
+    <section class="secao" id="contato">
+
+        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
+        <h2>Contato</h2>
+
+        <p class="texto">
+            📱 WhatsApp: (61) 98157-0523<br>
+            📦 Encomendas toda semana<br>
+            📍 Atendimento por mensagem
+        </p>
+
+        <p class="texto">
+            Estamos prontos para adoçar o seu dia. Fale com a gente e faça seu pedido.
+        </p>
+
+        <a href="https://wa.me/5561981570523" target="_blank" rel="noopener noreferrer" class="botao">
+            Falar no WhatsApp
+        </a>
+
+    </section>
+
+</main>
+
+<div id="modalPedido" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content">
+        <button class="btn-fechar" id="fecharModal" aria-label="Fechar">&times;</button>
+        
+        <div class="modal-header">
+            <img id="modalImg" src="" alt="Sabor selecionado">
+            <div>
+                <h3 id="modalTitulo">Sabor</h3>
+                <p class="modal-preco-unitario" id="modalPreco">R$ 0,00</p>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="controle-quantidade">
+                <label>Quantidade:</label>
+                <div class="contador">
+                    <button id="btnMenos" aria-label="Diminuir quantidade">-</button>
+                    <span id="quantidadeDisplay">1</span>
+                    <button id="btnMais" aria-label="Aumentar quantidade">+</button>
+                </div>
+            </div>
+
+            <div class="campo-obs">
+                <label for="observacao">Observações (opcional):</label>
+                <textarea id="observacao" rows="2" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="total-pedido">
+                <span>Total:</span>
+                <span id="modalTotal">R$ 0,00</span>
+            </div>
+            <button id="btnConfirmarPedido" class="botao botao-full">Enviar Pedido</button>
+        </div>
+    </div>
 </div>
 
-<!-- =========================
-     DIFERENCIAIS
-========================= -->
-<section class="secao diferenciais">
-
-    <img src="imagens/logo.png" class="logo-section" alt="B&M Cookies">
-
-    <h2>Por que escolher a B&M?</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>🍪 Produção Artesanal</h3>
-            <p>Preparado com cuidado em cada detalhe.</p>
-        </div>
-
-        <div class="card">
-            <h3>⭐ Ingredientes Selecionados</h3>
-            <p>Qualidade que você sente na primeira mordida.</p>
-        </div>
-
-        <div class="card">
-            <h3>❤️ Feito com Propósito</h3>
-            <p>Cada cookie carrega dedicação e sonho.</p>
-        </div>
-
-        <div class="card">
-            <h3>📦 Encomendas Semanais</h3>
-            <p>Produção organizada para sempre chegar fresco.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     CARDÁPIO
-========================= -->
-<section class="secao">
-
-    <img src="imagens/logo.png" class="logo-section" alt="B&M Cookies">
-
-    <h2>Nosso Cardápio</h2>
-
-    <div class="grid">
-
-        <div class="card" data-sabor="Tradicional">
-            <img src="imagens/cookietradicional.png">
-            <h3>Tradicional</h3>
-            <p>R$ 12,00</p>
-            <button class="btn-card">Pedir esse</button>
-        </div>
-
-        <div class="card" data-sabor="Chocolate Duplo">
-            <img src="imagens/cookiechocolateduplo.png">
-            <h3>Chocolate Duplo</h3>
-            <p>R$ 12,00</p>
-            <button class="btn-card">Pedir esse</button>
-        </div>
-
-        <div class="card" data-sabor="Limão">
-            <img src="imagens/cookielimao.png">
-            <h3>Limão</h3>
-            <p>R$ 12,00</p>
-            <button class="btn-card">Pedir esse</button>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     CONTATO
-========================= -->
-<section class="secao">
-
-    <img src="imagens/logo.png" class="logo-section" alt="B&M Cookies">
-
-    <h2>Contato</h2>
-
-    <p class="texto">
-        📱 WhatsApp: (61) 98157-0523<br>
-        📦 Encomendas toda semana<br>
-        📍 Atendimento por mensagem
-    </p>
-
-    <p class="texto">
-        Estamos prontos para adoçar o seu dia. Fale com a gente e faça seu pedido.
-    </p>
-
-    <a href="https://wa.me/5561981570523" class="botao">
-        Falar no WhatsApp
-    </a>
-
-</section>
-
-<!-- FOOTER -->
 <footer>
     <p>© 2026 B&M Cookies</p>
 </footer>
 
-<!-- WHATSAPP FLUTUANTE -->
-<a href="https://wa.me/5561981570523" class="whatsapp-float" target="_blank">
-    <img src="imagens/whatsapp.png">
+<a href="https://wa.me/5561981570523" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+    <img src="imagens/whatsapp.png" alt="Ícone do WhatsApp">
 </a>
 
 <script src="script.js"></script>
