@@ -175,3 +175,32 @@ if(btnConfirmar) {
         fecharModal();
     });
 }
+// ============================
+// MENU HAMBÚRGUER (MOBILE)
+// ============================
+const btnHamburguer = document.getElementById('btnHamburguer');
+const navMenu = document.getElementById('navMenu');
+
+if (btnHamburguer && navMenu) {
+  btnHamburguer.addEventListener('click', () => {
+    // Alterna a visibilidade do menu
+    navMenu.classList.toggle('aberto');
+    
+    // Alterna a animação do botão (vira X)
+    btnHamburguer.classList.toggle('ativo');
+    
+    // Atualiza acessibilidade
+    const estaAberto = navMenu.classList.contains('aberto');
+    btnHamburguer.setAttribute('aria-expanded', estaAberto);
+  });
+
+  // Fecha o menu ao clicar em qualquer link do menu
+  const linksMenu = navMenu.querySelectorAll('a');
+  linksMenu.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('aberto');
+      btnHamburguer.classList.remove('ativo');
+      btnHamburguer.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
