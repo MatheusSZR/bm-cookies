@@ -10,7 +10,7 @@
 }
 
 /* =========================
-   RESET SEGURO (SEM DESTRUIR IMAGENS)
+   RESET
 ========================= */
 *{
     margin:0;
@@ -26,7 +26,13 @@ body{
     line-height:1.6;
 }
 
-/* 🚨 NUNCA MAIS usar img global width:100% */
+/* =========================
+   MICRO MELHORIA GLOBAL
+========================= */
+section, .card{
+    will-change: transform;
+}
+
 /* =========================
    HERO
 ========================= */
@@ -73,50 +79,45 @@ body{
     max-width:80%;
     position:relative;
     z-index:3;
-    filter:drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.55));
+    transition:0.4s ease;
 }
 
-/* =========================
-   SAUDAÇÃO (FIX DEFINITIVO)
-========================= */
+.logo-hero:hover{
+    transform:scale(1.03);
+}
+
 .subtitulo{
     display:flex;
     align-items:center;
     justify-content:center;
     gap:6px;
-
     font-size:1.2rem;
     color:#fff;
-
-    position:relative;
     z-index:3;
+    position:relative;
 }
 
-/* 🔥 COOKIE DO TEXTO (IMUNE A QUALQUER CSS) */
+/* COOKIE DA SAUDAÇÃO */
 img.cookie-emoji{
     width:18px !important;
     height:18px !important;
-    max-width:18px !important;
-    max-height:18px !important;
-
     object-fit:contain;
-
     display:inline-block !important;
-    flex-shrink:0;
-
     vertical-align:middle;
 }
 
-/* texto hero */
+/* =========================
+   TEXTO HERO
+========================= */
 .descricao{
     position:relative;
     z-index:3;
     color:#fff;
     margin-top:10px;
-    opacity:0.85;
+    opacity:0.9;
 }
 
-/* botão hero */
 .botao{
     margin-top:25px;
     padding:14px 28px;
@@ -127,16 +128,17 @@ img.cookie-emoji{
     border-radius:999px;
     position:relative;
     z-index:3;
-    transition:0.3s ease;
+    transition:0.35s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 .botao:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
     background:var(--marrom-800);
 }
 
 /* =========================
-   SEÇÕES
+   SEÇÕES PADRÃO
 ========================= */
 .secao{
     padding:80px 20px;
@@ -144,6 +146,11 @@ img.cookie-emoji{
     display:flex;
     flex-direction:column;
     align-items:center;
+    transition:0.3s ease;
+}
+
+.secao:hover{
+    transform:translateY(-3px);
 }
 
 .secao h2{
@@ -160,17 +167,60 @@ img.cookie-emoji{
 }
 
 /* =========================
-   LOGOS SECUNDÁRIAS
+   LOGO SEÇÕES
 ========================= */
 .logo-section{
     width:90px !important;
     height:auto;
     margin-bottom:15px;
-    opacity:0.75;
+    opacity:0.8;
+    transition:0.3s ease;
+}
+
+.secao:hover .logo-section{
+    transform:scale(1.05);
+    opacity:1;
 }
 
 /* =========================
-   CARDÁPIO
+   DESTAQUE (BLOCO ESPECIAL)
+========================= */
+.destaque{
+    background:linear-gradient(135deg, #fff8f2, #fdefe4);
+    border-radius:25px;
+    margin:40px 20px;
+    padding:80px 20px;
+    box-shadow:0 18px 45px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   LAYOUT LADO A LADO
+========================= */
+@media (min-width:900px){
+
+    .secao-container{
+        display:flex;
+        gap:35px;
+        align-items:stretch;
+        justify-content:center;
+        padding:50px 20px;
+    }
+
+    .secao-container .secao{
+        flex:1;
+        margin:0;
+        border-radius:25px;
+        background:#fff;
+        box-shadow:0 15px 35px rgba(0,0,0,0.06);
+    }
+
+    .destaque{
+        margin:0;
+    }
+}
+
+/* =========================
+   GRID
 ========================= */
 .grid{
     display:grid;
@@ -180,22 +230,21 @@ img.cookie-emoji{
     width:100%;
 }
 
+/* =========================
+   CARDS PREMIUM
+========================= */
 .card{
     background:#fff;
     border-radius:18px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s ease;
+    padding:15px;
+    transition:0.35s ease;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-}
-
-.card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 20px 45px rgba(0,0,0,0.12);
 }
 
 .card h3{
@@ -209,18 +258,55 @@ img.cookie-emoji{
     color:var(--marrom-700);
 }
 
+/* =========================
+   DIFERENCIAIS
+========================= */
+.diferenciais .card{
+    text-align:center;
+    padding:22px;
+}
+
+.diferenciais .card h3{
+    font-size:1.1rem;
+}
+
+.diferenciais .card p{
+    font-size:0.95rem;
+    opacity:0.85;
+    font-weight:400;
+}
+
+/* =========================
+   IMAGEM CARDÁPIO
+========================= */
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* =========================
+   BOTÃO CARD
+========================= */
 .btn-card{
-    margin:10px 0 15px;
+    margin-top:10px;
     padding:10px 18px;
     border:none;
     border-radius:999px;
     background:var(--marrom-700);
     color:var(--bege);
     cursor:pointer;
+    transition:0.3s ease;
+}
+
+.btn-card:hover{
+    background:var(--marrom-800);
+    transform:scale(1.05);
 }
 
 /* =========================
-   COOKIES LATERAIS
+   COOKIES DECORATIVOS
 ========================= */
 .cookie-decor{
     position:fixed;
@@ -249,7 +335,7 @@ img.cookie-emoji{
 }
 
 /* =========================
-   CONTATO / FOOTER
+   FOOTER
 ========================= */
 footer{
     background:var(--marrom-700);
@@ -272,8 +358,13 @@ footer{
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    box-shadow:0 15px 35px rgba(0,0,0,0.25);
     z-index:999;
+    transition:0.3s ease;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1);
 }
 
 .whatsapp-float img{
@@ -281,7 +372,7 @@ footer{
 }
 
 /* =========================
-   RESPONSIVO (NÚCLEO FINAL)
+   RESPONSIVO
 ========================= */
 @media (max-width:768px){
 
@@ -300,12 +391,6 @@ footer{
 
     .descricao{
         font-size:0.9rem;
-        padding:0 10px;
-    }
-
-    .botao{
-        width:90%;
-        text-align:center;
     }
 
     .grid{
@@ -328,7 +413,6 @@ footer{
         width:70px;
     }
 
-    /* 🔥 COOKIES MOBILE CONTROLADOS */
     .cookie-decor{
         width:55px;
         opacity:0.6;
@@ -341,11 +425,8 @@ footer{
         display:none;
     }
 
-    /* 🔥 GARANTIA ABSOLUTA DO COOKIE DO TEXTO */
-    img.cookie-emoji{
-        width:18px !important;
-        height:18px !important;
-        max-width:18px !important;
-        max-height:18px !important;
+    .destaque{
+        margin:20px 10px;
+        padding:50px 15px;
     }
 }
