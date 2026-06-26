@@ -56,13 +56,60 @@ window.addEventListener("scroll", controlarCookies, { passive: true });
 window.addEventListener("load", controlarCookies);
 
 /* =========================
+   MENU HAMBÚRGUER (MOBILE) 🌟 NOVO
+   - Transição suave com altura dinâmica
+   - Fecha ao clicar em um link
+========================= */
+const btnHamburguer = document.getElementById('btnHamburguer');
+const navMenu = document.getElementById('navMenu');
+
+if (btnHamburguer && navMenu) {
+    btnHamburguer.addEventListener('click', () => {
+        const estaAberto = navMenu.classList.toggle('aberto');
+        btnHamburguer.classList.toggle('ativo');
+        btnHamburguer.setAttribute('aria-expanded', estaAberto);
+
+        if (estaAberto) {
+            // Pega a altura real do menu (scrollHeight) para animação perfeita
+            navMenu.style.maxHeight = navMenu.scrollHeight + 'px';
+        } else {
+            navMenu.style.maxHeight = '0px';
+        }
+    });
+
+    // Fecha o menu ao clicar em qualquer link
+    const linksMenu = navMenu.querySelectorAll('a');
+    linksMenu.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Fecha o menu suavemente
+            navMenu.classList.remove('aberto');
+            btnHamburguer.classList.remove('ativo');
+            btnHamburguer.setAttribute('aria-expanded', 'false');
+            navMenu.style.maxHeight = '0px';
+
+            // Rolagem suave com offset da navbar
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/* =========================
    LÓGICA DO MODAL DE PEDIDO
 ========================= */
 const modal = document.getElementById("modalPedido");
 const btnFechar = document.getElementById("fecharModal");
 const botoesAbrir = document.querySelectorAll(".btn-abrir-modal");
 
-// Elementos internos do modal para atualização de dados
 const modalImg = document.getElementById("modalImg");
 const modalTitulo = document.getElementById("modalTitulo");
 const modalPreco = document.getElementById("modalPreco");
@@ -73,20 +120,16 @@ const inputObs = document.getElementById("observacao");
 const displayTotal = document.getElementById("modalTotal");
 const btnConfirmar = document.getElementById("btnConfirmarPedido");
 
-// Variáveis que vão armazenar o estado do pedido atual
 let pedidoAtual = {
     sabor: "",
     precoUnitario: 0,
     quantidade: 1
 };
 
-// Função para formatar o número em Moeda Brasileira (Ex: R$ 12,00)
 const formatarMoeda = (numeroDigitado) => {
-    // Usando 'numeroDigitado' para evitar confusões de escopo
     return `R$ ${numeroDigitado.toFixed(2).replace('.', ',')}`;
 };
 
-// Calcula e atualiza o total na tela
 const atualizarTotal = () => {
     const total = pedidoAtual.precoUnitario * pedidoAtual.quantidade;
     displayTotal.innerText = formatarMoeda(total);
@@ -97,21 +140,17 @@ botoesAbrir.forEach(btn => {
     btn.addEventListener("click", (e) => {
         const card = e.target.closest(".card");
         
-        // Pega os dados armazenados nos atributos 'data-' do HTML
         pedidoAtual.sabor = card.getAttribute("data-sabor");
         pedidoAtual.precoUnitario = parseFloat(card.getAttribute("data-preco"));
-        pedidoAtual.quantidade = 1; // Sempre reseta a quantidade para 1 ao abrir
+        pedidoAtual.quantidade = 1;
 
-        // Preenche o modal visualmente
         modalImg.src = card.getAttribute("data-img");
         modalTitulo.innerText = pedidoAtual.sabor;
         modalPreco.innerText = formatarMoeda(pedidoAtual.precoUnitario);
         displayQtd.innerText = pedidoAtual.quantidade;
-        inputObs.value = ""; // Limpa qualquer observação anterior
+        inputObs.value = "";
 
         atualizarTotal();
-        
-        // Exibe o modal na tela
         modal.classList.add("ativo");
     });
 });
@@ -121,10 +160,8 @@ const fecharModal = () => {
     modal.classList.remove("ativo");
 };
 
-// Fechar ao clicar no "X"
 if(btnFechar) btnFechar.addEventListener("click", fecharModal);
 
-// Fechar ao clicar fora da caixinha branca (no fundo escuro)
 if(modal) {
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
@@ -133,7 +170,14 @@ if(modal) {
     });
 }
 
-// CONTROLES DE QUANTIDADE (+ E -)
+// Fechar com tecla ESC 🌟 NOVO
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('ativo')) {
+        fecharModal();
+    }
+});
+
+// CONTROLES DE QUANTIDADE
 if(btnMais) {
     btnMais.addEventListener("click", () => {
         pedidoAtual.quantidade++;
@@ -158,7 +202,6 @@ if(btnConfirmar) {
         const total = pedidoAtual.precoUnitario * pedidoAtual.quantidade;
         const obs = inputObs.value.trim();
         
-        // Formata a mensagem com negritos (*) para o WhatsApp
         let mensagem = `Olá! Gostaria de fazer um pedido 🍪\n\n`;
         mensagem += `*Sabor:* ${pedidoAtual.sabor}\n`;
         mensagem += `*Quantidade:* ${pedidoAtual.quantidade}\n`;
@@ -174,33 +217,4 @@ if(btnConfirmar) {
         window.open(url, "_blank");
         fecharModal();
     });
-}
-// ============================
-// MENU HAMBÚRGUER (MOBILE)
-// ============================
-const btnHamburguer = document.getElementById('btnHamburguer');
-const navMenu = document.getElementById('navMenu');
-
-if (btnHamburguer && navMenu) {
-  btnHamburguer.addEventListener('click', () => {
-    // Alterna a visibilidade do menu
-    navMenu.classList.toggle('aberto');
-    
-    // Alterna a animação do botão (vira X)
-    btnHamburguer.classList.toggle('ativo');
-    
-    // Atualiza acessibilidade
-    const estaAberto = navMenu.classList.contains('aberto');
-    btnHamburguer.setAttribute('aria-expanded', estaAberto);
-  });
-
-  // Fecha o menu ao clicar em qualquer link do menu
-  const linksMenu = navMenu.querySelectorAll('a');
-  linksMenu.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('aberto');
-      btnHamburguer.classList.remove('ativo');
-      btnHamburguer.setAttribute('aria-expanded', 'false');
-    });
-  });
 }
