@@ -22,7 +22,9 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Playfair Display', sans-serif;
+    /* Melhoria: font-family corrigida — Playfair Display é serif e não
+       deve estar aqui como fallback genérico do body */
+    font-family: 'Inter', sans-serif;
     background: var(--bege);
     color: var(--marrom-900);
     overflow-x: hidden;
@@ -32,8 +34,13 @@ body {
 
 /* =========================
    MICRO MELHORIA GLOBAL
+   Melhoria: will-change aplicado só a elementos que realmente animam,
+   não em todos os .card e section (evita consumo excessivo de memória)
 ========================= */
-section, .card {
+.card:hover,
+.logo-hero,
+.botao,
+.whatsapp-float {
     will-change: transform;
 }
 
@@ -44,8 +51,7 @@ section, .card {
     position: fixed;
     top: 0;
     width: 100%;
-    /* Efeito de vidro fosco (Glassmorphism) */
-    background: rgba(253, 239, 228, 0.6); 
+    background: rgba(253, 239, 228, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 1000;
@@ -90,6 +96,55 @@ section, .card {
 }
 
 /* =========================
+   MENU HAMBÚRGUER
+   Melhoria: menu mobile funcional com animação
+========================= */
+.nav-hamburguer {
+    display: none; /* Fica oculto no desktop */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.nav-hamburguer:hover {
+    background: rgba(129, 55, 10, 0.08);
+}
+
+/* As três linhas do hambúrguer */
+.nav-hamburguer span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--marrom-900);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: center;
+}
+
+/* Animação de X quando o menu está aberto */
+.nav-hamburguer.ativo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburguer.ativo span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-hamburguer.ativo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================
    HERO & PARALLAX
 ========================= */
 .hero {
@@ -100,7 +155,7 @@ section, .card {
     align-items: center;
     text-align: center;
     position: relative;
-    padding: 100px 20px 60px; /* Aumentei o padding-top por causa da navbar fixa */
+    padding: 100px 20px 60px;
     overflow: hidden;
 }
 
@@ -112,7 +167,6 @@ section, .card {
     z-index: 0;
 }
 
-/* Efeito Parallax (A imagem fica fixa enquanto o site rola) */
 .parallax {
     background-attachment: fixed;
 }
@@ -649,23 +703,70 @@ footer {
 }
 
 /* =========================
-   RESPONSIVO
+   RESPONSIVO — MOBILE
 ========================= */
 @media (max-width: 768px) {
-    /* Navbar no Mobile - Esconde links e deixa só a Logo centralizada */
+    /* Melhoria: hambúrguer aparece no mobile */
+    .nav-hamburguer {
+        display: flex;
+    }
+
+    /* Menu mobile: oculto por padrão, abre ao clicar */
     .nav-links {
         display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(253, 239, 228, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(129, 55, 10, 0.08);
+        padding: 10px 0;
+        box-shadow: 0 10px 30px rgba(47, 18, 4, 0.08);
     }
+
+    /* Quando o menu está aberto (classe adicionada via JS) */
+    .nav-links.aberto {
+        display: flex;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 14px 25px;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(129, 55, 10, 0.05);
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .nav-links li a:hover {
+        background: rgba(129, 55, 10, 0.05);
+        color: var(--marrom-700);
+    }
+
+    /* Navbar precisa ser relative para o menu dropdown funcionar */
+    .navbar {
+        position: fixed;
+        top: 0;
+    }
+
     .nav-container {
-        justify-content: center;
+        justify-content: space-between;
+        position: relative;
     }
 
     .hero {
         min-height: 80vh;
         padding: 100px 20px 40px;
     }
-    
-    /* Desativa o parallax no mobile para evitar problemas de performance/scroll em iOS */
+
+    /* Melhoria: parallax desativado no mobile (evita bug do iOS) */
     .parallax {
         background-attachment: scroll;
     }
@@ -693,5 +794,32 @@ footer {
         margin: 20px 10px;
         padding: 60px 20px;
         border-radius: 25px;
+    }
+}
+
+/* =========================
+   ACESSIBILIDADE — REDUÇÃO DE MOVIMENTO
+   Melhoria: respeita a preferência do sistema operacional
+   para quem tem sensibilidade a animações
+========================= */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .parallax {
+        background-attachment: scroll;
+    }
+
+    .cookie-decor {
+        display: none;
     }
 }

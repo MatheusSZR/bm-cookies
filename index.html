@@ -15,10 +15,29 @@
 
 <body>
 
+<!-- =====================
+     NAVBAR
+     Melhoria: botão hambúrguer adicionado para mobile
+     aria-expanded e aria-controls para acessibilidade
+===================== -->
 <nav id="navbar" class="navbar">
     <div class="nav-container">
         <a href="#inicio" class="nav-logo">B&M</a>
-        <ul class="nav-links">
+
+        <!-- Botão hambúrguer (visível só no mobile) -->
+        <button
+            class="nav-hamburguer"
+            id="btnHamburguer"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="navMenu"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navMenu" role="list">
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#diferenciais">Diferenciais</a></li>
             <li><a href="#cardapio">Cardápio</a></li>
@@ -162,9 +181,20 @@
 
 </main>
 
-<div id="modalPedido" class="modal-overlay" aria-hidden="true">
+<!-- =====================
+     MODAL DE PEDIDO
+     Melhoria: role="dialog", aria-modal="true" e aria-labelledby para acessibilidade
+===================== -->
+<div
+    id="modalPedido"
+    class="modal-overlay"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitulo"
+>
     <div class="modal-content">
-        <button class="btn-fechar" id="fecharModal" aria-label="Fechar">&times;</button>
+        <button class="btn-fechar" id="fecharModal" aria-label="Fechar modal">&times;</button>
         
         <div class="modal-header">
             <img id="modalImg" src="" alt="Sabor selecionado">
@@ -179,7 +209,7 @@
                 <label>Quantidade:</label>
                 <div class="contador">
                     <button id="btnMenos" aria-label="Diminuir quantidade">-</button>
-                    <span id="quantidadeDisplay">1</span>
+                    <span id="quantidadeDisplay" aria-live="polite">1</span>
                     <button id="btnMais" aria-label="Aumentar quantidade">+</button>
                 </div>
             </div>
@@ -193,7 +223,7 @@
         <div class="modal-footer">
             <div class="total-pedido">
                 <span>Total:</span>
-                <span id="modalTotal">R$ 0,00</span>
+                <span id="modalTotal" aria-live="polite">R$ 0,00</span>
             </div>
             <button id="btnConfirmarPedido" class="botao botao-full">Enviar Pedido</button>
         </div>
