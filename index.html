@@ -1,244 +1,443 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="B&M Cookies oferece cookies artesanais premium, produzidos com ingredientes selecionados e uma experiência irresistível para quem busca sabor e sofisticação."
+    />
+    <meta name="theme-color" content="#2f1204" />
+    <title>B&M Cookies | Cookies artesanais premium</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B&M Cookies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- =====================
-     NAVBAR
-     Melhoria: botão hambúrguer adicionado para mobile
-     aria-expanded e aria-controls para acessibilidade
-===================== -->
-<nav id="navbar" class="navbar">
-    <div class="nav-container">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="navbar" class="navbar">
+      <div class="nav-container">
         <a href="#inicio" class="nav-logo">B&M</a>
 
-        <!-- Botão hambúrguer (visível só no mobile) -->
         <button
-            class="nav-hamburguer"
-            id="btnHamburguer"
-            aria-label="Abrir menu"
-            aria-expanded="false"
-            aria-controls="navMenu"
+          class="nav-hamburger"
+          id="btnHamburguer"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="navMenu"
+          type="button"
         >
-            <span></span>
-            <span></span>
-            <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
         <ul class="nav-links" id="navMenu" role="list">
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#diferenciais">Diferenciais</a></li>
-            <li><a href="#cardapio">Cardápio</a></li>
-            <li><a href="#contato">Contato</a></li>
+          <li><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li><a class="nav-link" href="#diferenciais">Diferenciais</a></li>
+          <li><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+          <li><a class="nav-link" href="#catalogo">Catálogo</a></li>
+          <li><a class="nav-link" href="#faq">FAQ</a></li>
+          <li><a class="nav-link" href="#contato">Contato</a></li>
         </ul>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<div class="decoracoes" aria-hidden="true">
-    <img src="imagens/cookietradicional.png" class="cookie-decor left c1" alt="">
-    <img src="imagens/cookiechocolateduplo.png" class="cookie-decor right c2" alt="">
-    <img src="imagens/cookielimao.png" class="cookie-decor left c3" alt="">
-    
-    <img src="imagens/cookietradicional.png" class="cookie-decor right c4" alt="">
-    <img src="imagens/cookiechocolateduplo.png" class="cookie-decor left c5" alt="">
-    <img src="imagens/cookielimao.png" class="cookie-decor right c6" alt="">
-</div>
-
-<header class="hero" id="inicio">
-
-    <div class="hero-bg parallax"></div>
-
-    <img src="imagens/logo.png" class="logo-hero" alt="Logotipo B&M Cookies">
-
-    <p id="saudacao" class="subtitulo"></p>
-
-    <h1 class="descricao">
-        Transformando sonhos e propósitos em algo especial, um cookie de cada vez.
-    </h1>
-
-    <a href="#cardapio" class="botao">
-        Ver Cardápio
-    </a>
-
-    <div class="hero-fade"></div>
-
-</header>
-
-<main>
-    
-    <div class="secao-container">
-
-        <section class="secao bloco-interativo" id="sobre">
-            <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
-            <h2>Sobre nós</h2>
-            <p class="texto">
-                A B&M Cookies nasceu da união entre sonhos, propósito e a vontade de transformar uma ideia em algo especial. Cada detalhe é feito com dedicação para levar sabor, qualidade e momentos felizes a quem nos escolhe.
-            </p>
-        </section>
-
-        <section class="secao bloco-interativo destaque" id="proposito">
-            <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
-            <h2>Por trás de cada cookie</h2>
-            <p class="texto">
-                Mais do que produzir cookies artesanais, estamos construindo uma história. Cada pedido representa um passo importante nessa jornada e cada cliente passa a fazer parte desse sonho que estamos transformando em realidade.
-            </p>
-        </section>
-
+    <div class="decoracoes" aria-hidden="true">
+      <img src="imagens/cookietradicional.png" class="cookie-decor left c1" alt="" />
+      <img src="imagens/cookiechocolateduplo.png" class="cookie-decor right c2" alt="" />
+      <img src="imagens/cookielimao.png" class="cookie-decor left c3" alt="" />
+      <img src="imagens/cookietradicional.png" class="cookie-decor right c4" alt="" />
+      <img src="imagens/cookiechocolateduplo.png" class="cookie-decor left c5" alt="" />
+      <img src="imagens/cookielimao.png" class="cookie-decor right c6" alt="" />
     </div>
 
-    <section class="secao diferenciais" id="diferenciais">
-
-        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
-        <h2>Por que escolher a B&M?</h2>
-
-        <div class="grid">
-            <article class="card">
-                <h3>🍪 Produção Artesanal</h3>
-                <p>Preparado com cuidado em cada detalhe.</p>
-            </article>
-
-            <article class="card">
-                <h3>⭐ Ingredientes Selecionados</h3>
-                <p>Qualidade que você sente na primeira mordida.</p>
-            </article>
-
-            <article class="card">
-                <h3>❤️ Feito com Propósito</h3>
-                <p>Cada cookie carrega dedicação e sonho.</p>
-            </article>
-
-            <article class="card">
-                <h3>📦 Encomendas Semanais</h3>
-                <p>Produção organizada para sempre chegar fresco.</p>
-            </article>
-        </div>
-
-    </section>
-
-    <section class="secao" id="cardapio">
-
-        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
-        <h2>Nosso Cardápio</h2>
-
-        <div class="grid">
-            <article class="card" data-sabor="Tradicional" data-preco="12.00" data-img="imagens/cookietradicional.png">
-                <img src="imagens/cookietradicional.png" alt="Foto do Cookie Tradicional">
-                <h3>Tradicional</h3>
-                <p class="preco">R$ 12,00</p>
-                <button class="btn-card btn-abrir-modal">Pedir esse</button>
-            </article>
-
-            <article class="card" data-sabor="Chocolate Duplo" data-preco="12.00" data-img="imagens/cookiechocolateduplo.png">
-                <img src="imagens/cookiechocolateduplo.png" alt="Foto do Cookie de Chocolate Duplo">
-                <h3>Chocolate Duplo</h3>
-                <p class="preco">R$ 12,00</p>
-                <button class="btn-card btn-abrir-modal">Pedir esse</button>
-            </article>
-
-            <article class="card" data-sabor="Limão" data-preco="12.00" data-img="imagens/cookielimao.png">
-                <img src="imagens/cookielimao.png" alt="Foto do Cookie de Limão">
-                <h3>Limão</h3>
-                <p class="preco">R$ 12,00</p>
-                <button class="btn-card btn-abrir-modal">Pedir esse</button>
-            </article>
-
-        </div>
-
-    </section>
-
-    <section class="secao" id="contato">
-
-        <img src="imagens/logo.png" class="logo-section" alt="" aria-hidden="true">
-        <h2>Contato</h2>
-
-        <p class="texto">
-            📱 WhatsApp: (61) 98157-0523<br>
-            📦 Encomendas toda semana<br>
-            📍 Atendimento por mensagem
-        </p>
-
-        <p class="texto">
-            Estamos prontos para adoçar o seu dia. Fale com a gente e faça seu pedido.
-        </p>
-
-        <a href="https://wa.me/5561981570523" target="_blank" rel="noopener noreferrer" class="botao">
-            Falar no WhatsApp
-        </a>
-
-    </section>
-
-</main>
-
-<!-- =====================
-     MODAL DE PEDIDO
-     Melhoria: role="dialog", aria-modal="true" e aria-labelledby para acessibilidade
-===================== -->
-<div
-    id="modalPedido"
-    class="modal-overlay"
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalTitulo"
->
-    <div class="modal-content">
-        <button class="btn-fechar" id="fecharModal" aria-label="Fechar modal">&times;</button>
-        
-        <div class="modal-header">
-            <img id="modalImg" src="" alt="Sabor selecionado">
-            <div>
-                <h3 id="modalTitulo">Sabor</h3>
-                <p class="modal-preco-unitario" id="modalPreco">R$ 0,00</p>
+    <header class="hero" id="inicio">
+      <div class="hero-background" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-text reveal">
+          <div class="hero-brand" aria-label="Marca B&M Cookies">
+            <div class="hero-brand-mark">
+              <img src="imagens/logo.png" alt="Logo B&M Cookies" />
             </div>
+            <div class="hero-brand-copy">
+              <span class="hero-brand-name">B&M Cookies</span>
+              <span class="hero-brand-subtitle">Cookies artesanais premium</span>
+            </div>
+          </div>
+          <p class="eyebrow saudacao-text" id="saudacao">Bom dia</p>
+          <h1>Cookies artesanais com sabor de carinho e sofisticação.</h1>
+          <p class="hero-copy">
+            Transformando sonhos e propósitos em algo especial, um cookie de cada vez, com textura irresistível, ingredientes selecionados e acabamento premium.
+          </p>
+          <div class="hero-actions">
+            <a href="#catalogo" class="btn btn-primary">Peça Agora</a>
+            <a href="#sobre" class="btn btn-secondary">Conheça a Marca</a>
+          </div>
+          <ul class="hero-highlights" aria-label="Principais diferenciais da marca">
+            <li>Ingredientes selecionados</li>
+            <li>Produção artesanal</li>
+            <li>Entrega rápida</li>
+          </ul>
+        </div>
+
+        <div class="hero-slider reveal" aria-label="Carrossel de cookies">
+          <div class="hero-slider-track">
+            <article class="hero-slide active" data-name="Tradicional" data-description="Textura macia, sabor marcante e presença de casa.">
+              <img src="imagens/cookietradicional.png" alt="Cookie tradicional" />
+            </article>
+            <article class="hero-slide" data-name="Chocolate Duplo" data-description="A combinação perfeita entre crocante e intenso.">
+              <img src="imagens/cookiechocolateduplo.png" alt="Cookie de chocolate duplo" />
+            </article>
+            <article class="hero-slide" data-name="Limão" data-description="Um sabor leve, sofisticado e extremamente elegante.">
+              <img src="imagens/cookielimao.png" alt="Cookie de limão" />
+            </article>
+          </div>
+
+          <div class="hero-slide-info" aria-live="polite">
+            <span class="hero-slide-tag">Seleção premium</span>
+            <h3 id="heroSlideTitle">Tradicional</h3>
+            <p id="heroSlideDescription">Textura macia, sabor marcante e presença de casa.</p>
+          </div>
+
+          <div class="hero-slider-controls">
+            <button class="slider-arrow slider-prev" type="button" aria-label="Imagem anterior">&#10094;</button>
+            <div class="hero-dots" role="tablist" aria-label="Navegação do carrossel">
+              <button class="slider-dot active" type="button" aria-label="Exibir cookie tradicional" data-index="0"></button>
+              <button class="slider-dot" type="button" aria-label="Exibir cookie chocolate duplo" data-index="1"></button>
+              <button class="slider-dot" type="button" aria-label="Exibir cookie de limão" data-index="2"></button>
+            </div>
+            <button class="slider-arrow slider-next" type="button" aria-label="Próxima imagem">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="stats-strip" aria-label="Números da marca">
+        <div class="stat reveal">
+          <strong>100%</strong>
+          <span>artesanal</span>
+        </div>
+        <div class="stat reveal">
+          <strong>Semanal</strong>
+          <span>pedidos</span>
+        </div>
+        <div class="stat reveal">
+          <strong>Sábados</strong>
+          <span>entregas</span>
+        </div>
+        <div class="stat reveal">
+          <strong>R$ 12</strong>
+          <span>cada unidade</span>
+        </div>
+      </section>
+
+      <section class="section section-surface hero-detail-section" id="nossos-cookies">
+        <div class="section-heading reveal">
+          <p class="section-tag">Nossos Cookies</p>
+          <h2>Sabores que encantam em cada mordida</h2>
+          <p>
+            Conheça os cookies artesanais da B&M Cookies, preparados com textura, sabor e cuidado em cada detalhe.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-card reveal">
+            <img src="imagens/cookietradicional.png" alt="Cookie tradicional da B&M Cookies" />
+            <div class="gallery-card-body">
+              <h3>Tradicional</h3>
+              <p>O clássico da casa, com textura macia e sabor marcante.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <img src="imagens/cookiechocolateduplo.png" alt="Cookie de chocolate duplo da B&M Cookies" />
+            <div class="gallery-card-body">
+              <h3>Chocolate Duplo</h3>
+              <p>Chocolate intenso, bordas irresistíveis e um sabor que conquista.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card reveal">
+            <img src="imagens/cookielimao.png" alt="Cookie de limão da B&M Cookies" />
+            <div class="gallery-card-body">
+              <h3>Limão</h3>
+              <p>Uma combinação leve, elegante e refrescante em cada pedaço.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="sobre">
+        <div class="split-section">
+          <div class="split-media reveal">
+            <img src="imagens/logo.png" alt="Logotipo da B&M Cookies" />
+          </div>
+          <div class="split-copy reveal">
+            <p class="section-tag">Sobre nós</p>
+            <h2>Uma marca feita com propósito, tradição e muito cuidado.</h2>
+            <p>
+              A B&M Cookies nasceu da união entre sonhos, propósito e a vontade de transformar uma ideia em algo especial. Cada detalhe é pensado para oferecer uma experiência sofisticada, acolhedora e memorável.
+            </p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <span>✦</span>
+                <p>Receitas desenvolvidas com atenção aos sabores e à textura.</p>
+              </div>
+              <div class="feature-item">
+                <span>✦</span>
+                <p>Atendimento pessoal e carinho em cada pedido.</p>
+              </div>
+              <div class="feature-item">
+                <span>✦</span>
+                <p>Uma marca que une tradição, estética e sabor premium.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-surface" id="diferenciais">
+        <div class="section-heading reveal">
+          <p class="section-tag">Diferenciais</p>
+          <h2>Por que nossos cookies se destacam</h2>
+          <p>
+            Cada detalhe é escolhido para entregar uma experiência premium, do preparo à apresentação.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="info-card reveal">
+            <div class="icon">🍪</div>
+            <h3>Ingredientes selecionados</h3>
+            <p>Materiais de alta qualidade para um sabor marcante e consistente.</p>
+          </article>
+          <article class="info-card reveal">
+            <div class="icon">🧁</div>
+            <h3>Produção artesanal</h3>
+            <p>Preparados com cuidado, atenção e uma identidade única em cada lote.</p>
+          </article>
+          <article class="info-card reveal">
+            <div class="icon">⚡</div>
+            <h3>Entrega rápida</h3>
+            <p>Processo ágil para que seu pedido chegue com frescor e praticidade.</p>
+          </article>
+          <article class="info-card reveal">
+            <div class="icon">🌿</div>
+            <h3>Cookies sempre frescos</h3>
+            <p>Combinação de preparo cuidadoso e rotina organizada para manter a qualidade.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-surface" id="como-funciona">
+        <div class="section-heading reveal">
+          <p class="section-tag">Como funciona</p>
+          <h2>Seu pedido com praticidade, frescor e carinho</h2>
+          <p>
+            Organizamos cada etapa para que a experiência da B&M Cookies seja clara, elegante e confiável desde o primeiro contato até a entrega.
+          </p>
+        </div>
+
+        <div class="cards-grid how-it-works-grid">
+          <article class="info-card reveal">
+            <div class="icon">🛒</div>
+            <h3>Pedidos durante a semana</h3>
+            <p>Os pedidos podem ser feitos ao longo de toda a semana, com atenção e praticidade para cada cliente.</p>
+          </article>
+          <article class="info-card reveal">
+            <div class="icon">🍪</div>
+            <h3>Produção sob encomenda</h3>
+            <p>Os cookies são produzidos sob encomenda, garantindo frescor, textura e qualidade em cada entrega.</p>
+          </article>
+          <article class="info-card reveal">
+            <div class="icon">🚚</div>
+            <h3>Entregas aos sábados</h3>
+            <p>As entregas são realizadas exclusivamente aos sábados, mantendo a rotina e o cuidado com cada pedido.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="catalogo">
+        <div class="section-heading reveal">
+          <p class="section-tag">Catálogo</p>
+          <h2>Sabores que conquistam cada mordida</h2>
+          <p>
+            Escolha o seu favorito e monte o pedido com facilidade, direto pelo WhatsApp.
+          </p>
+        </div>
+
+        <div class="cards-grid catalog-grid">
+          <article class="product-card reveal" data-sabor="Tradicional" data-preco="12.00" data-img="imagens/cookietradicional.png" data-description="O clássico da casa, com textura macia e sabor envolvente.">
+            <div class="product-image-wrap">
+              <img src="imagens/cookietradicional.png" alt="Cookie tradicional da B&M Cookies" />
+            </div>
+            <h3>Tradicional</h3>
+            <p class="product-description">O clássico da casa, com textura macia e sabor envolvente.</p>
+            <div class="product-footer">
+              <span class="product-price">R$ 12,00</span>
+              <button class="btn btn-card btn-abrir-modal" type="button">Peça agora</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-sabor="Chocolate Duplo" data-preco="14.00" data-img="imagens/cookiechocolateduplo.png" data-description="Chocolate intenso, crocante nas bordas e irresistível em cada pedaço.">
+            <div class="product-image-wrap">
+              <img src="imagens/cookiechocolateduplo.png" alt="Cookie de chocolate duplo da B&M Cookies" />
+            </div>
+            <h3>Chocolate Duplo</h3>
+            <p class="product-description">Chocolate intenso, crocante nas bordas e irresistível em cada pedaço.</p>
+            <div class="product-footer">
+              <span class="product-price">R$ 14,00</span>
+              <button class="btn btn-card btn-abrir-modal" type="button">Peça agora</button>
+            </div>
+          </article>
+
+          <article class="product-card reveal" data-sabor="Limão" data-preco="13.00" data-img="imagens/cookielimao.png" data-description="Uma combinação leve e refrescante com um toque cítrico elegante.">
+            <div class="product-image-wrap">
+              <img src="imagens/cookielimao.png" alt="Cookie de limão da B&M Cookies" />
+            </div>
+            <h3>Limão</h3>
+            <p class="product-description">Uma combinação leve e refrescante com um toque cítrico elegante.</p>
+            <div class="product-footer">
+              <span class="product-price">R$ 13,00</span>
+              <button class="btn btn-card btn-abrir-modal" type="button">Peça agora</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="faq-shell reveal">
+          <div class="faq-intro">
+            <p class="section-tag">FAQ</p>
+            <h2>Perguntas frequentes</h2>
+            <p>
+              Tudo o que você precisa saber antes de fazer seu pedido.
+            </p>
+          </div>
+
+          <div class="faq-list">
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                Como funciona o pedido?
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Você escolhe o sabor, informa a quantidade e envia o pedido pelo WhatsApp. A B&M Cookies confirma o atendimento rapidamente.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                Os cookies são feitos na hora?
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Sim. A produção é artesanal e feita com atenção para manter a qualidade, o frescor e o sabor premium.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                Posso pedir para presente?
+                <span>+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Claro. Você pode deixar uma observação no pedido e a equipe vai preparar uma experiência especial para esse momento.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contato">
+        <div class="contact-card reveal">
+          <p class="section-tag">Atendimento</p>
+          <h2>Pronto para adoçar seu dia?</h2>
+          <p>
+            Fale com a gente pelo WhatsApp e monte seu pedido com praticidade, carinho e muito sabor.
+          </p>
+          <a href="https://wa.me/5561981570523" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Falar no WhatsApp</a>
+          <div class="contact-info">
+            <p>📱 (61) 98157-0523</p>
+            <p>🕒 Atendimento por mensagem</p>
+            <p>📦 Encomendas toda semana</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modalPedido" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+      <div class="modal-content">
+        <button class="btn-fechar" id="fecharModal" aria-label="Fechar modal" type="button">&times;</button>
+
+        <div class="modal-header">
+          <img id="modalImg" src="" alt="Sabor selecionado" />
+          <div>
+            <h3 id="modalTitulo">Sabor</h3>
+            <p class="modal-preco-unitario" id="modalPreco">R$ 0,00</p>
+          </div>
         </div>
 
         <div class="modal-body">
-            <div class="controle-quantidade">
-                <label>Quantidade:</label>
-                <div class="contador">
-                    <button id="btnMenos" aria-label="Diminuir quantidade">-</button>
-                    <span id="quantidadeDisplay" aria-live="polite">1</span>
-                    <button id="btnMais" aria-label="Aumentar quantidade">+</button>
-                </div>
+          <div class="controle-quantidade">
+            <label>Quantidade:</label>
+            <div class="contador">
+              <button id="btnMenos" aria-label="Diminuir quantidade" type="button">-</button>
+              <span id="quantidadeDisplay" aria-live="polite">1</span>
+              <button id="btnMais" aria-label="Aumentar quantidade" type="button">+</button>
             </div>
+          </div>
 
-            <div class="campo-obs">
-                <label for="observacao">Observações (opcional):</label>
-                <textarea id="observacao" rows="2" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
-            </div>
+          <div class="campo-obs">
+            <label for="observacao">Observações (opcional):</label>
+            <textarea id="observacao" rows="3" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
+          </div>
         </div>
 
         <div class="modal-footer">
-            <div class="total-pedido">
-                <span>Total:</span>
-                <span id="modalTotal" aria-live="polite">R$ 0,00</span>
-            </div>
-            <button id="btnConfirmarPedido" class="botao botao-full">Enviar Pedido</button>
+          <div class="total-pedido">
+            <span>Total:</span>
+            <span id="modalTotal" aria-live="polite">R$ 0,00</span>
+          </div>
+          <button id="btnConfirmarPedido" class="btn btn-primary btn-full" type="button">Enviar Pedido</button>
         </div>
+      </div>
     </div>
-</div>
 
-<footer>
-    <p>© 2026 B&M Cookies</p>
-</footer>
+    <footer class="footer footer-featured">
+      <div class="footer-brand">
+        <h3>B&M Cookies</h3>
+        <p>Cookies artesanais premium com sabor, personalidade e presença.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <a href="#sobre">Sobre</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5561981570523" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#contato">Atendimento</a>
+        <span>Horário: sempre disponível via mensagem</span>
+      </div>
+      <div class="footer-links">
+        <h4>Redes</h4>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://wa.me/5561981570523" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <p class="footer-copy">© 2026 B&M Cookies. Todos os direitos reservados.</p>
+    </footer>
 
-<a href="https://wa.me/5561981570523" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-    <img src="imagens/whatsapp.png" alt="Ícone do WhatsApp">
-</a>
+    <a href="https://wa.me/5561981570523" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+      <img src="imagens/whatsapp.png" alt="Ícone do WhatsApp" />
+    </a>
 
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
