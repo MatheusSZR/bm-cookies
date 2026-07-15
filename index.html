@@ -371,29 +371,38 @@
       </section>
     </main>
 
-    <div id="modalPedido" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
-      <div class="modal-content">
+    <div id="modalPedido" class="modal-overlay" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
         <button class="btn-fechar" id="fecharModal" aria-label="Fechar modal" type="button">&times;</button>
 
-        <div class="modal-header">
+        <header class="modal-header">
           <img id="modalImg" src="" alt="Sabor selecionado" />
-          <div>
+          <div class="modal-titulo-wrap">
             <h3 id="modalTitulo">Sabor</h3>
             <p class="modal-preco-unitario" id="modalPreco">R$ 0,00</p>
           </div>
-        </div>
+        </header>
 
         <div class="modal-body">
-          <div class="controle-quantidade">
+          <section class="modal-section modal-produto" aria-label="Produto">
+            <!-- Mantém título e imagem como referência do produto -->
+          </section>
+
+          <section class="modal-section modal-quantidade" aria-label="Quantidade">
             <label>Quantidade:</label>
             <div class="contador">
               <button id="btnMenos" aria-label="Diminuir quantidade" type="button">-</button>
               <span id="quantidadeDisplay" aria-live="polite">1</span>
               <button id="btnMais" aria-label="Aumentar quantidade" type="button">+</button>
             </div>
-          </div>
+          </section>
 
-          <div class="campo-entrega">
+          <section class="modal-section modal-observacoes" aria-label="Observações">
+            <label for="observacao">Observações (opcional):</label>
+            <textarea id="observacao" rows="3" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
+          </section>
+
+          <section class="modal-section modal-entrega" aria-label="Data da entrega">
             <label>Data da entrega:</label>
             <p class="entrega-aviso">📅 As entregas da B&M Cookies acontecem exclusivamente aos sábados.</p>
             <div class="calendario" role="group" aria-label="Calendário de entregas">
@@ -414,26 +423,21 @@
               <div id="diasCalendario" class="calendario-dias"></div>
             </div>
             <div id="erroData" class="erro-campo" role="alert"></div>
-          </div>
+          </section>
 
-          <div class="campo-horario">
+          <section class="modal-section modal-horario" aria-label="Horário preferencial">
             <label for="horarioEntrega">Horário preferencial:</label>
             <select id="horarioEntrega" aria-label="Horário preferencial"></select>
-          </div>
-
-          <div class="campo-obs">
-            <label for="observacao">Observações (opcional):</label>
-            <textarea id="observacao" rows="3" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
-          </div>
+          </section>
         </div>
 
-        <div class="modal-footer">
+        <footer class="modal-footer">
           <div class="total-pedido">
             <span>Total:</span>
             <span id="modalTotal" aria-live="polite">R$ 0,00</span>
           </div>
           <button id="btnConfirmarPedido" class="btn btn-primary btn-full" type="button">Enviar Pedido</button>
-        </div>
+        </footer>
       </div>
     </div>
 
