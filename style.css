@@ -414,14 +414,22 @@ button {
   position: absolute;
   left: 1.2rem;
   right: 1.2rem;
-  bottom: 4.7rem;
+  bottom: 1.05rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 1rem 1.1rem;
   border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(47, 18, 4, 0.78), rgba(129, 55, 10, 0.62));
+  background: linear-gradient(135deg, rgba(47, 18, 4, 0.82), rgba(129, 55, 10, 0.68));
   color: var(--branco);
   box-shadow: 0 12px 30px rgba(47, 18, 4, 0.22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-slide-info-copy {
+  flex: 1;
 }
 
 .hero-slide-tag {
@@ -446,6 +454,44 @@ button {
 .hero-slide-info p {
   font-size: 0.9rem;
   color: rgba(255, 253, 249, 0.88);
+}
+
+.hero-slide-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 253, 249, 0.2);
+  background: linear-gradient(135deg, var(--bege), var(--branco));
+  color: var(--marrom-700);
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(47, 18, 4, 0.2);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.hero-slide-cta:hover {
+  transform: translateY(-2px);
+  background: var(--branco);
+  color: var(--marrom-900);
+  box-shadow: 0 14px 28px rgba(47, 18, 4, 0.24);
+}
+
+@media (max-width: 640px) {
+  .hero-slide-info {
+    bottom: 0.85rem;
+    left: 0.85rem;
+    right: 0.85rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .hero-slide-cta {
+    width: 100%;
+  }
 }
 
 .hero-slider-controls {
@@ -1010,15 +1056,127 @@ button {
   color: var(--branco);
 }
 
+.campo-entrega,
+.campo-horario,
 .campo-obs {
   margin-bottom: 1rem;
 }
 
+.campo-entrega label,
+.campo-horario label,
 .campo-obs label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   color: var(--marrom-800);
+}
+
+.entrega-aviso {
+  font-size: 0.9rem;
+  color: var(--marrom-700);
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+
+.calendario {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, var(--bege) 0%, #f9efe0 100%);
+}
+
+.calendario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.calendario-nav {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--branco);
+  color: var(--marrom-800);
+  box-shadow: 0 6px 14px rgba(47, 18, 4, 0.08);
+  cursor: pointer;
+}
+
+.calendario-nav:hover {
+  background: var(--marrom-700);
+  color: var(--branco);
+}
+
+.calendario-mes {
+  font-weight: 700;
+  color: var(--marrom-900);
+  text-transform: capitalize;
+}
+
+.calendario-dias-semana,
+.calendario-dias {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.calendario-dias-semana span {
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--marrom-700);
+  padding-bottom: 0.25rem;
+}
+
+.calendario-dia {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 0.7rem;
+  background: var(--branco);
+  color: var(--marrom-900);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.calendario-dia:hover:not(.desabilitado) {
+  background: rgba(129, 55, 10, 0.12);
+}
+
+.calendario-dia.selecionado {
+  background: var(--marrom-700);
+  color: var(--branco);
+}
+
+.calendario-dia.desabilitado {
+  background: rgba(47, 18, 4, 0.06);
+  color: rgba(47, 18, 4, 0.4);
+  cursor: not-allowed;
+}
+
+.calendario-vazio {
+  aspect-ratio: 1;
+}
+
+.erro-campo {
+  min-height: 1.1rem;
+  margin-top: 0.5rem;
+  color: #b42318;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.campo-horario select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 0.8rem 0.9rem;
+  font-family: inherit;
+  background: var(--branco);
+  color: var(--marrom-900);
 }
 
 .campo-obs textarea {
@@ -1033,6 +1191,20 @@ button {
 
 .btn-full {
   width: 100%;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.1rem;
+  }
+
+  .calendario {
+    padding: 0.7rem;
+  }
+
+  .calendario-dia {
+    font-size: 0.9rem;
+  }
 }
 
 .whatsapp-float {

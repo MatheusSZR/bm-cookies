@@ -188,6 +188,12 @@ const displayQtd = document.getElementById('quantidadeDisplay');
 const inputObs = document.getElementById('observacao');
 const displayTotal = document.getElementById('modalTotal');
 const btnConfirmar = document.getElementById('btnConfirmarPedido');
+const calendario = document.getElementById('diasCalendario');
+const mesCalendario = document.getElementById('mesCalendario');
+const btnMesAnterior = document.getElementById('btnMesAnterior');
+const btnMesSeguinte = document.getElementById('btnMesSeguinte');
+const erroData = document.getElementById('erroData');
+const horarioEntrega = document.getElementById('horarioEntrega');
 
 let pedidoAtual = {
   sabor: '',
@@ -195,12 +201,88 @@ let pedidoAtual = {
   quantidade: 1,
 };
 
+let dataSelecionada = '';
+let viewDate = new Date();
+let horarioSelecionado = '09:00';
+
 const formatarMoeda = (valor) => `R$ ${valor.toFixed(2).replace('.', ',')}`;
+
+const formatarData = (data) => {
+  const dia = String(data.getDate()).padStart(2, '0');
+  const mes = String(data.getMonth() + 1).padStart(2, '0');
+  const ano = data.getFullYear();
+  return `${dia}/${mes}/${ano}`;
+};
 
 const atualizarTotal = () => {
   if (!displayTotal) return;
   const total = pedidoAtual.precoUnitario * pedidoAtual.quantidade;
   displayTotal.textContent = formatarMoeda(total);
+};
+
+const gerarOpcoesHorario = () => {
+  if (!horarioEntrega) return;
+
+  const horarios = [];
+  for (let hora = 9; hora <= 19; hora += 1) {
+    horarios.push(`${String(hora).padStart(2, '0')}:00`);
+    if (hora < 19) {
+      horarios.push(`${String(hora).padStart(2, '0')}:30`);
+    }
+  }
+
+  horarioEntrega.innerHTML = horarios.map((hora) => `<option value="${hora}">${hora}</option>`).join('');
+  horarioEntrega.value = '09:00';
+  horarioSelecionado = '09:00';
+};
+
+const isDataDisponivel = (data) => {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+  const dataBase = new Date(data.getFullYear(), data.getMonth(), data.getDate());
+  return dataBase.getDay() === 6 && dataBase >= hoje;
+};
+
+const renderCalendario = () => {
+  if (!calendario || !mesCalendario) return;
+
+  const nomeMes = viewDate.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+  mesCalendario.textContent = nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1);
+
+  const primeiroDia = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1);
+  const ultimoDia = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0);
+  let html = '';
+
+  for (let index = 0; index < primeiroDia.getDay(); index += 1) {
+    html += '<span class="calendario-vazio"></span>';
+  }
+
+  for (let dia = 1; dia <= ultimoDia.getDate(); dia += 1) {
+    const data = new Date(viewDate.getFullYear(), viewDate.getMonth(), dia);
+    const disponivel = isDataDisponivel(data);
+    const selecionado = dataSelecionada && data.toDateString() === dataSelecionada.toDateString();
+    const classes = ['calendario-dia'];
+
+    if (!disponivel) classes.push('desabilitado');
+    if (selecionado) classes.push('selecionado');
+
+    html += `<button class="${classes.join(' ')}" type="button" data-dia="${dia}" ${disponivel ? '' : 'disabled'}>${dia}</button>`;
+  }
+
+  calendario.innerHTML = html;
+
+  calendario.querySelectorAll('.calendario-dia').forEach((botao) => {
+    botao.addEventListener('click', () => {
+      if (botao.classList.contains('desabilitado')) return;
+
+      const dia = Number(botao.getAttribute('data-dia'));
+      dataSelecionada = new Date(viewDate.getFullYear(), viewDate.getMonth(), dia);
+      renderCalendario();
+      if (erroData) {
+        erroData.textContent = '';
+      }
+    });
+  });
 };
 
 const abrirModal = (card) => {
@@ -209,6 +291,17 @@ const abrirModal = (card) => {
   pedidoAtual.sabor = card.getAttribute('data-sabor') || '';
   pedidoAtual.precoUnitario = parseFloat(card.getAttribute('data-preco') || '0');
   pedidoAtual.quantidade = 1;
+  dataSelecionada = '';
+  viewDate = new Date();
+  horarioSelecionado = '09:00';
+
+  if (horarioEntrega) {
+    horarioEntrega.value = horarioSelecionado;
+  }
+
+  if (erroData) {
+    erroData.textContent = '';
+  }
 
   modalImg.src = card.getAttribute('data-img') || '';
   modalImg.alt = `Cookie ${pedidoAtual.sabor}`;
@@ -217,6 +310,7 @@ const abrirModal = (card) => {
   displayQtd.textContent = pedidoAtual.quantidade;
   inputObs.value = '';
   atualizarTotal();
+  renderCalendario();
   modal.classList.add('ativo');
   modal.setAttribute('aria-hidden', 'false');
 };
@@ -225,6 +319,9 @@ const fecharModal = () => {
   if (!modal) return;
   modal.classList.remove('ativo');
   modal.setAttribute('aria-hidden', 'true');
+  if (erroData) {
+    erroData.textContent = '';
+  }
 };
 
 botoesAbrir.forEach((btn) => {
@@ -272,19 +369,53 @@ if (btnMenos) {
   });
 }
 
+if (btnMesAnterior) {
+  btnMesAnterior.addEventListener('click', () => {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+    renderCalendario();
+  });
+}
+
+if (btnMesSeguinte) {
+  btnMesSeguinte.addEventListener('click', () => {
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+    renderCalendario();
+  });
+}
+
+if (horarioEntrega) {
+  horarioEntrega.addEventListener('change', () => {
+    horarioSelecionado = horarioEntrega.value;
+  });
+}
+
+gerarOpcoesHorario();
+renderCalendario();
+
 if (btnConfirmar) {
   btnConfirmar.addEventListener('click', () => {
+    if (!dataSelecionada) {
+      if (erroData) {
+        erroData.textContent = 'A data da entrega é obrigatória.';
+      }
+      return;
+    }
+
     const total = pedidoAtual.precoUnitario * pedidoAtual.quantidade;
     const obs = inputObs.value.trim();
+    const horario = horarioEntrega?.value || horarioSelecionado;
 
-    let mensagem = 'Olá! Gostaria de fazer um pedido 🍪\n\n';
-    mensagem += `*Sabor:* ${pedidoAtual.sabor}\n`;
-    mensagem += `*Quantidade:* ${pedidoAtual.quantidade}\n`;
+    let mensagem = 'Olá! Gostaria de fazer um pedido na B&M Cookies.\n\n';
+    mensagem += '🍪 Pedido:\n';
+    mensagem += `• ${pedidoAtual.sabor} (x${pedidoAtual.quantidade})\n`;
     mensagem += `*Total:* ${formatarMoeda(total)}\n`;
 
     if (obs) {
-      mensagem += `\n*Observações:* ${obs}`;
+      mensagem += `\n📝 Observações:\n${obs}\n`;
     }
+
+    mensagem += `\n📅 Data da entrega:\n${formatarData(dataSelecionada)}\n`;
+    mensagem += `\n⏰ Horário preferencial:\n${horario}\n\nGostaria de confirmar a disponibilidade.`;
 
     const numeroWhatsApp = '5561981570523';
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;

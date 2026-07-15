@@ -393,6 +393,34 @@
             </div>
           </div>
 
+          <div class="campo-entrega">
+            <label>Data da entrega:</label>
+            <p class="entrega-aviso">📅 As entregas da B&M Cookies acontecem exclusivamente aos sábados.</p>
+            <div class="calendario" role="group" aria-label="Calendário de entregas">
+              <div class="calendario-header">
+                <button class="calendario-nav" id="btnMesAnterior" type="button" aria-label="Mês anterior">‹</button>
+                <div id="mesCalendario" class="calendario-mes"></div>
+                <button class="calendario-nav" id="btnMesSeguinte" type="button" aria-label="Próximo mês">›</button>
+              </div>
+              <div class="calendario-dias-semana">
+                <span>Dom</span>
+                <span>Seg</span>
+                <span>Ter</span>
+                <span>Qua</span>
+                <span>Qui</span>
+                <span>Sex</span>
+                <span>Sáb</span>
+              </div>
+              <div id="diasCalendario" class="calendario-dias"></div>
+            </div>
+            <div id="erroData" class="erro-campo" role="alert"></div>
+          </div>
+
+          <div class="campo-horario">
+            <label for="horarioEntrega">Horário preferencial:</label>
+            <select id="horarioEntrega" aria-label="Horário preferencial"></select>
+          </div>
+
           <div class="campo-obs">
             <label for="observacao">Observações (opcional):</label>
             <textarea id="observacao" rows="3" placeholder="Ex: Sem muito limão, é para presente..."></textarea>
