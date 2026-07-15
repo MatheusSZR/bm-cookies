@@ -1012,6 +1012,7 @@ button {
   flex-shrink: 0;
 }
 
+.modal-header img {
   width: 72px;
   height: 72px;
   object-fit: cover;
@@ -1076,7 +1077,7 @@ button {
 .campo-obs label {
   display: block;
   margin-bottom: 0.45rem;
-
+}
 .entrega-aviso {
   font-size: 0.9rem;
   color: var(--marrom-700);
@@ -1087,10 +1088,13 @@ button {
 .calendario {
   border: 1px solid var(--border);
   border-radius: 0.9rem;
-  padding: 0.5rem;
-  background: linear-gradient(135deg, var(--bege) 0%, #f9efe0 100%);
+  padding: 0.55rem;
+  background: linear-gradient(180deg, rgba(253,244,234,0.98), rgba(249,239,224,0.98));
   max-width: 320px;
+  width: 100%;
   margin: 0.25rem auto;
+  box-shadow: 0 8px 18px rgba(31,12,3,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .calendario-header {
@@ -1099,18 +1103,20 @@ button {
   justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 0.45rem;
+  padding: 0 4px;
 }
 
 .calendario-nav {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
-  background: var(--branco);
+  background: linear-gradient(180deg, var(--branco), #fffaf6);
   color: var(--marrom-800);
-  box-shadow: 0 5px 12px rgba(47, 18, 4, 0.08);
+  box-shadow: 0 6px 12px rgba(47,18,4,0.06);
   cursor: pointer;
+  border: 1px solid rgba(129,55,10,0.06);
 }
 
 .calendario-nav:hover {
@@ -1129,7 +1135,7 @@ button {
 .calendario-dias {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.2rem;
+  gap: 0.22rem;
 }
 
 .calendario-dias-semana span {
@@ -1144,28 +1150,36 @@ button {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 0.6rem;
-  background: var(--branco);
+  background: linear-gradient(180deg, var(--branco), #fffdf9);
   color: var(--marrom-900);
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  border: 1px solid transparent;
-  font-size: 0.9rem;
-  padding: 0.12rem;
+  border: 1px solid rgba(129,55,10,0.06);
+  font-size: 0.92rem;
+  display: inline-grid;
+  place-items: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.18s ease;
+  box-shadow: 0 4px 8px rgba(31,12,3,0.04);
+  padding: 0.06rem 0.08rem;
 }
 
 .calendario-dia:hover:not(.desabilitado) {
-  background: rgba(129, 55, 10, 0.12);
+  transform: translateY(-3px);
+  background: linear-gradient(180deg, rgba(129,55,10,0.08), rgba(129,55,10,0.06));
+  box-shadow: 0 8px 16px rgba(31,12,3,0.07);
 }
 
 .calendario-dia.selecionado {
-  background: var(--marrom-700);
+  background: linear-gradient(135deg, var(--marrom-700), var(--marrom-600));
   color: var(--branco);
+  box-shadow: 0 10px 22px rgba(31,12,3,0.12);
 }
 
 .calendario-dia.desabilitado {
-  background: rgba(47, 18, 4, 0.06);
-  color: rgba(47, 18, 4, 0.4);
+  background: transparent;
+  color: rgba(47,18,4,0.35);
   cursor: not-allowed;
+  border: 1px dashed rgba(47,18,4,0.06);
 }
 
 .calendario-vazio {
