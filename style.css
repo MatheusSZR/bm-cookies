@@ -1094,6 +1094,7 @@ button {
   width: 100%;
   margin: 0.25rem auto;
   box-shadow: 0 8px 18px rgba(31,12,3,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 
@@ -1410,6 +1411,7 @@ button {
     left: 0;
     width: 100%;
     background: rgba(253, 244, 234, 0.96);
+    backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
